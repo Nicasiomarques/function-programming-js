@@ -1,0 +1,17 @@
+{
+  "name": "fp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "@types/ramda": "^0.27.34",
+    "ramda": "^0.27.1"
+  }
+}
