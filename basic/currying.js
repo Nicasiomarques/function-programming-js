@@ -1,4 +1,4 @@
-import { curry } from 'ramda';
+import { curry } from './myOwnCurryFN.js';
 
 // const sum = (a, b) => a + b;
 
