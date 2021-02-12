@@ -1,4 +1,4 @@
-import { curry } from './myOwnCurryFN.js';
+import { curry } from './3.myOwnCurryFN.js';
 
 // const sum = (a, b) => a + b;
 
