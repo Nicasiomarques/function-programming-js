@@ -10,9 +10,36 @@ const arrayObjects = [{ id: 1 }, { id: 6 }, { id: 12 }, { id: 449 }];
 
 // 1ª way:
 // const ids = arrayObjects.map(item => item.id);
-// console.log(ids);
 
 // 2ª currying improvement
-const get = curry((property, object) => object[property]);
-const ids = arrayObjects.map(get('id'));
-console.log(ids);
+// const get = curry((property, object) => object[property]);
+// const ids = arrayObjects.map(get('id'));
+
+// 3ª currying improvement
+// const get = curry((property, object) => object[property]);
+// const getIds = object => object.map(get('id'));
+
+// 4ª currying improvement
+const get = curry((prop, obj) => obj[prop]);
+const map = curry((fn, values) => values.map(fn));
+const getIds = map(get('id'));
+
+// console.log(getIds(arrayObjects));
+
+// Real world code
+const fetchFromServer = new Promise(resolve => {
+  resolve({
+    user: 'Nicasio Silva',
+    stars: 18,
+    posts: [
+      { title: 'Why use fp?' },
+      { title: 'Microservices is future?' },
+      { title: 'Why haskell?' },
+    ],
+  });
+});
+
+fetchFromServer
+  .then(get('posts'))
+  .then(map(get('title')))
+  .then(console.log);
