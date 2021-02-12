@@ -39,6 +39,13 @@ const fetchFromServer = new Promise(resolve => {
   });
 });
 
+// with normal with js
+fetchFromServer
+  .then(user => user.posts)
+  .then(posts => posts.map(post => post.title))
+  .then(console.log);
+
+// with currying
 fetchFromServer
   .then(get('posts'))
   .then(map(get('title')))
