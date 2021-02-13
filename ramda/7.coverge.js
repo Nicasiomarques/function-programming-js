@@ -6,7 +6,8 @@ const [validArr, invalidArr] = [
 ];
 
 // const firstElementIsBiggest = elements => elements[0] === elements.sort((a, b) => b - a)[0];
-const firstElementIsBiggest = converge(equals, [head, pipe(sort(descend(identity)), head)]);
+const sortByBiggestFirst = sort(descend(identity));
+const firstElementIsBiggest = converge(equals, [head, pipe(sortByBiggestFirst, head)]);
 
 console.log(firstElementIsBiggest(validArr));
 console.log(firstElementIsBiggest(invalidArr));
