@@ -17,3 +17,17 @@ const groupByPropReducer = (acc, city) => {
     internetSpeeds: R.append(city.internetSpeed, internetSpeeds)
   })
 }
+
+const groupedByProp = R.reduce(groupByPropReducer, {}, cities)
+
+const calculateScore = city => {
+  const { cost = 0, internetSpeed = 0 } = city
+  const costPercentile = percentil(groupedByProp.costs, cost)
+  const internetSpeedPercentile = percentil(
+    groupedByProp.internetSpeeds,
+    internetSpeed
+  )
+
+  const score = 100 * (1.0 - costPercentile) + 20 * internetSpeedPercentile
+  return R.merge(city, { score })
+}
