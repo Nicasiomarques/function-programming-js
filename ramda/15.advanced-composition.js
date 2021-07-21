@@ -36,3 +36,13 @@ const filterByWeather = city => {
   const { temperature = 0, humidity = 0 } = city
   return temperature > 68 && temperature < 85 && humidity > 30 && humidity < 70;
 }
+
+const top10 = R.pipe(
+  R.map(updateTemperature(kelvinToFahrenheit)),
+  R.filter(filterByWeather),
+  R.map(calculateScore),
+  R.sortWith([R.descend(city => city.score)]),
+  R.take(10)
+)(cities)
+
+console.log(top10)
