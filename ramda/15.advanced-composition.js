@@ -31,3 +31,8 @@ const calculateScore = city => {
   const score = 100 * (1.0 - costPercentile) + 20 * internetSpeedPercentile
   return R.merge(city, { score })
 }
+
+const filterByWeather = city => {
+  const { temperature = 0, humidity = 0 } = city
+  return temperature > 68 && temperature < 85 && humidity > 30 && humidity < 70;
+}
